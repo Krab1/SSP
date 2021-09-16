@@ -1,0 +1,11 @@
+group 'com.krab'
+version '1.0.1'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+wrapper {
+    distributionUrl = "https://services.gradle.org/distributions/gradle-6.9-bin.zip"
+}

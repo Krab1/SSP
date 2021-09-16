@@ -1,0 +1,47 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+version '1.0'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+    all*.exclude module : 'spring-boot-starter-logging'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'com.krab:avrotemplate:1.0.4'
+    compileOnly ("org.apache.avro:avro:1.10.2") {
+        exclude group: 'org.apache.avro', module: 'avro-tools'
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        exclude group: 'com.google.code', module: 'gson'
+    }
+    implementation 'tech.allegro.schema.json2avro:converter:0.2.10'
+    implementation 'org.springframework.boot:spring-boot-starter-integration:2.5.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
+    implementation 'org.apache.kafka:kafka-streams:2.8.0'
+    implementation 'org.springframework.integration:spring-integration-http:5.5.3'
+    implementation 'org.springframework.integration:spring-integration-kafka:5.5.3'
+    implementation 'org.springframework.kafka:spring-kafka:2.7.6'
+    //implementation 'org.slf4j:slf4j-api:1.7.32'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
+    testImplementation 'org.springframework.integration:spring-integration-test:5.5.3'
+    testImplementation 'org.springframework.kafka:spring-kafka-test:2.7.6'
+    testImplementation 'org.mockito:mockito-all:1.10.19'
+    testImplementation 'com.google.code.gson:gson:2.8.8'
+}
+
+test {
+    useJUnitPlatform()
+}

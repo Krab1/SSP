@@ -1,0 +1,18 @@
+{
+  "type" : "record",
+  "namespace" : "com.krab.avro",
+  "name" : "InputMessageEvent",
+  "fields" : [
+    { "name" : "messageId" , "type" : "string", "doc" : "Message ID number"
+    },
+    { "name" : "someValue" , "type" :  ["null", "long"],
+      "default": null
+    },
+    { "name" : "someValue2" , "type" : ["null", "double"],
+      "default": null
+    },
+    { "name" : "someFlag" , "type" : ["null", "boolean"],
+      "default": null
+    }
+  ]
+}
